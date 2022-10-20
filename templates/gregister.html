@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>新規組織登録ページ</title>
+        <meta name="description" content="タスク管理ができるWebApp">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>TaskAPP</h1>
+        </header>
+        <h1>新規組織登録ページ</h1>
+        <h4>{{msg}}</h4>
+        <table align="center" >
+            <form action="/gregister" method="POST">
+                <tr><td align="right">組織ID</td><td><input type="text" name="group_id" placeholder="16文字以内(英数字のみ)"></td></tr>
+                <tr><td align="right">組織名</td><td><input type="text" name="group_name" placeholder="16文字以内"></td></tr>
+                <tr><td align="right">パスワード</td><td><input type="group_password" name="password" placeholder="16文字以内(英数字のみ)"></td></tr>
+                <tr><td align="right">パスワード再入力</td><td><input type="group_password_sam" name="password_sam" placeholder="再入力"></td></tr>
+                <input type="submit" value="送信">
+            </form>
+        </table>
+    </body>
+</html>

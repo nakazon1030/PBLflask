@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>新規登録ページ</title>
+        <meta name="description" content="タスク管理ができるWebApp">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>TaskAPP</h1>
+        </header>
+        <h1>新規ユーザー登録ページ</h1>
+        <h4>{{msg}}</h4>
+        <table align="center" >
+            <form action="/register" method="POST">
+                <tr><td align="right">ユーザーID</td><td><input type="text" name="user_id" placeholder="16文字以内(英数字のみ)" required></td></tr>
+                <tr><td align="right">氏名</td><td><input type="text" name="name" placeholder="16文字以内" required></td></tr>
+                <tr><td align="right">パスワード</td><td><input type="password" name="password" placeholder="16文字以内(英数字のみ)" required></td></tr>
+                <tr><td align="right">パスワード再入力</td><td><input type="password" name="password_sam" placeholder="再入力" required></td></tr>
+                <tr><td align="right">組織名</td><td><input type="text" name="groupe_id" placeholder="組織ID" required></td><td>参加する組織が未作成の場合は<a href=gregister.html">こちら</td></a></tr>
+                <tr><td align="right">組織名パスワード</td><td><input type="password" name="groupe_password" placeholder="組織パスワード" required></td></tr>
+                <tr><td align="right"><input type="submit" value="送信"></td></tr>
+            </form>
+        </table>
+    </body>
+</html>
