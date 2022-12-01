@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>タスクリストWebApp</title>
+        <meta name="description" content="タスク管理ができるWebApp">
+    </head>
+    <body>
+
+        <h1>TaskAPP</h1>
+        <h2>{{group_name}}のタスクリスト</h2>
+        <a href="/create" role="button">タスク新規作成</a>
+        <a href="/logout" role="button">ログアウト</a>
+
+        {% for task in tasklist %}
+            {% if task[5] == 0 %}
+                <article>
+                    <h3>{{ task[2] }} 未完了!</h3>
+                    <p>最終更新日:{{task[4]}}</p>
+                    <p>詳細:{{task[3]}}</p>
+                    <a href="/edit/{{ task[0] }}" role="button">編集</a>
+                    <a href="/status1/{{ task[0] }}" role="button">完了</a>
+                    <a href="/delete/{{ task[0] }}">消去</a>
+                </article>
+            {% elif task[5] == 1 %}
+                <article>
+                    <s><h3>{{ task[2] }}</h3>
+                    <p>最終更新日:{{task[4]}}</p>
+                    <p>詳細:{{task[3]}}</p>
+                    </s>
+                    <a href="/edit/{{ task[0] }}" role="button">編集</a>
+                    <a href="/status0/{{ task[0] }}" role="button">未完了</a>
+                    <a href="/delete/{{ task[0] }}">消去</a>
+                </article>
+            {% else %}
+                <article>
+                    <h3>{{ task[2] }}完了状況不明</h3>
+                    <p>最終更新日:{{task[4]}}</p>
+                    <p>詳細:{{task[3]}}</p>
+                    <a href="/edit/{{ task[0] }}" role="button">編集</a>
+                    <a href="/status1/{{ task[0] }}" role="button">完了</a>
+                    <a href="/status0/{{ task[0] }}" role="button">未完了</a>
+                    <a href="/delete/{{ task[0] }}">消去</a>
+
+                </article>
+            {% endif %}
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>タスク編集ページ</title>
+        <meta name="description" content="タスク管理ができるWebApp">
+    </head>
+    <body>
+        <header>
+            <h1>TaskAPP</h1>
+        </header>
+        <h1>タスク編集ページ</h1>
+        <h4>{{msg}}</h4>
+        <table align="center" >
+            <form action="/edit/{{id}}" method="POST">
+                <tr><td align="right">タスク名</td><td><input type="text" name="name" value={{title}} required></td></tr>
+                <tr><td align="right">詳細</td><td><textarea name="body" >{{body}}</textarea></td></tr>
+                <tr><td align="right"><input type="submit" value="更新"></td></tr>
+            </form>
+        </table>
+    </body>
+</html>
