@@ -9,9 +9,13 @@
 
         <h1>TaskAPP</h1>
         <h2>{{group_name}}のタスクリスト</h2>
-        <a href="/create" role="button">タスク新規作成</a>
-        <a href="/logout" role="button">ログアウト</a>
-
+        <h3>{{msg}}</h3>
+        <ul>
+        <li><a href="/create" role="button">タスク新規作成</a></li>
+        <li><a href="/logout" role="button">ログアウト</a></li>
+        <li><a href="/json/{{group_name}}" role="button">Json出力</a></li>
+        <li><a href="/xml/{{group_name}}" role="button">XML出力</a></li>
+        </ul>
         {% for task in tasklist %}
             {% if task[5] == 0 %}
                 <article>
