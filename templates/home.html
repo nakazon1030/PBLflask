@@ -9,7 +9,7 @@
 
         <h1>TaskAPP</h1>
         <h2>{{group_name}}のタスクリスト</h2>
-        <h3>{{msg}}</h3>
+        <h3>{{user_name}}がログイン中</h3>
         <ul>
         <li><a href="/create" role="button">タスク新規作成</a></li>
         <li><a href="/logout" role="button">ログアウト</a></li>
@@ -20,7 +20,9 @@
             {% if task[5] == 0 %}
                 <article>
                     <h3>{{ task[2] }} 未完了!</h3>
+                    <p>作成者:{{task[7]}}</p>
                     <p>最終更新日:{{task[4]}}</p>
+                    <p>最終更新者:{{task[6]}}</p>
                     <p>詳細:{{task[3]}}</p>
                     <a href="/edit/{{ task[0] }}" role="button">編集</a>
                     <a href="/status1/{{ task[0] }}" role="button">完了</a>

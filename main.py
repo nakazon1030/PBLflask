@@ -217,6 +217,7 @@ def home():
     #タスク表示
     if "group_name" in session:
         group_name = session["group_name"]
+        user_name = session["name"]
         con = connect()
         cur = con.cursor()
         cur.execute("""SELECT *
@@ -229,7 +230,7 @@ def home():
         
         con.close()
         
-        return render_template("home.html", tasklist = data, group_name = group_name)
+        return render_template("home.html", tasklist = data, group_name = group_name, user_name=user_name)
     else:
         return redirect("/")
 @app.route("/create", methods=["GET","POST"])
@@ -243,14 +244,15 @@ def create():
             name = html.escape(request.form.get("name"))
             body = html.escape(request.form.get("body"))
             date = datetime.date.today()
+            user = session["name"]
             group_name = session["group_name"]
             con = connect()
             cur = con.cursor()
             cur.execute("""
                         INSERT INTO task
-                        (group_name,task_name,body,date,status)
-                        VALUES (%(id)s,%(name)s, %(body)s, %(date)s,0)
-                        """,{"id":group_name,"name":name, "body":body, "date":date} )
+                        (group_name,task_name,body,date,status,create_user,user_name)
+                        VALUES (%(id)s,%(name)s, %(body)s, %(date)s,0,%(user)s,%(user)s)
+                        """,{"id":group_name,"name":name, "body":body, "date":date, "user":user} )
 
             con.commit()
             con.close()
@@ -293,14 +295,15 @@ def edit(id):
                 name = html.escape(request.form.get("name"))
                 body = html.escape(request.form.get("body"))
                 date = datetime.date.today()
+                user = session["name"]
 
                 con = connect()
                 cur = con.cursor()
                 cur.execute("""
                             UPDATE task
-                            SET    task_name = %(name)s, body = %(body)s, date = %(date)s
+                            SET    task_name = %(name)s, body = %(body)s, date = %(date)s, user_name = %(user)s
                             WHERE  task_id = %(id)s
-                            """,{"name":name, "body":body, "date":date, "id":id})
+                            """,{"name":name, "body":body, "date":date, "id":id, "user":user})
 
                 con.commit()
                 con.close()
